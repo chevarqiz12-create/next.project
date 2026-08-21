@@ -7,7 +7,7 @@ import leave from "@/app/profile/assets/leave.svg"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function layout({
+export default function layout ( {
   children,
 }: {
   children: React.ReactNode;

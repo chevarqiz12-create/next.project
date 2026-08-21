@@ -1,12 +1,18 @@
-interface Props {
-    params: {
-        id: number;
-        num_of_ads: number;
-        name: string;
-        icon: string;
-        image: string;
-        color: string;
-        order: number;
-
-    }
+interface Category {
+  id: number;
+  num_of_ads: number;
+  name: string;
+  icon: string;
+  image: string;
+  color: string;
+  order: number;
+}
+interface Product {
+  id: number;
+  num_of_ads: number;
+  name: string;
+  icon: string;
+  image: string;
+  color: string;
+  order: number;
 }

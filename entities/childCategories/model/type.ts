@@ -1,4 +1,4 @@
-interface Props {
+interface Child {
   id: number;
   num_of_ads: number;
   color: string;

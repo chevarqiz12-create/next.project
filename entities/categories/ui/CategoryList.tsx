@@ -2,24 +2,7 @@
 import { useEffect, useState } from "react";
 import { categoryApi, getCategory } from "../api/categoryApi";
 
-interface Category {
-  id: number;
-  num_of_ads: number;
-  name: string;
-  icon: string;
-  image: string;
-  color: string;
-  order: number;
-}
-interface Product {
-  id: number;
-  num_of_ads: number;
-  name: string;
-  icon: string;
-  image: string;
-  color: string;
-  order: number;
-}
+
 export default function CategoryList() {
 
   const [categories, setCategories] = useState<Category[]>([]);
