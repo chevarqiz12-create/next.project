@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { categoryApi, getCategory } from "../api/categoryApi";
+import { Category } from "@/entities/categories/model/typs";
+import {Product} from "@/entities/categories/model/typs"
 
 
 export default function CategoryList() {

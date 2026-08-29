@@ -24,7 +24,7 @@ export default function layout ( {
         </div>
         <button className="flex gap-2 text-red-500"><Image src={leave} alt="leave" /> Выйти из аккаунта</button>
       </aside>
-      <main className=" h-full w-full rounded-2xl">{children}</main>
+      <main className=" h-full w-full  rounded-2xl">{children}</main>
     </div>
   )
 }

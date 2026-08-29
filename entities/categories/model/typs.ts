@@ -1,4 +1,4 @@
-interface Category {
+  export interface Category {
   id: number;
   num_of_ads: number;
   name: string;
@@ -6,8 +6,9 @@ interface Category {
   image: string;
   color: string;
   order: number;
+   parentId: number | null; 
 }
-interface Product {
+ export interface Product {
   id: number;
   num_of_ads: number;
   name: string;

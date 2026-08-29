@@ -12,5 +12,12 @@ export default function Categories() {
     router.push(`?${params.toString()}`, { scroll: false });
   }
 
-  return { handleCategory, selectedCategory };
+  function clearCategory() {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("categoryId");
+    const query = params.toString();
+    router.push(query ? `?${query}` : "/", { scroll: false });
+  }
+
+  return { handleCategory, selectedCategory, clearCategory };
 }

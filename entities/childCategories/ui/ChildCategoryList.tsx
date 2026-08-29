@@ -45,7 +45,7 @@ const handleChildClick = (childItem: Child) => {
         <div
           key={item.id}
           onClick={() => handleChildClick(item)}
-          className="flex justify-between bg-amber-100 rounded-md p-2 gap-2 cursor-pointer hover:bg-amber-200 transition"
+          className="flex justify-between bg-gray-100 rounded-md p-2 gap-2 cursor-pointer hover:bg-gray-200 transition"
         >
           <h5>{item.name}</h5>
           <Image src={item?.image} alt="child" height={30} width={30} />
