@@ -4,7 +4,7 @@ import { categoryApi } from "../api/categoryApi";
 import Categories from "@/features/categories/Categories";
 import Child from "@/entities/childCategories/ui/ChildCategoryList";
 import { Breadcrumbs } from "@/shared/ui/Breadcrumbs/Breadcrumbs";
-import { Category } from "@/entities/categories/model/typs";
+import { Category } from "@/entities/categories/model/types";
 
 export default function CategoriesRender() {
   const [categories, setCategories] = useState<Category[]>([]);

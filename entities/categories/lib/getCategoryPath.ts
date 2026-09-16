@@ -1,5 +1,5 @@
 // entities/categories/lib/getCategoryPath.ts
-import {Category} from "../model/typs"
+import {Category} from "../model/types"
 
 
 
