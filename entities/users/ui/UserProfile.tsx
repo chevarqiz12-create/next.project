@@ -69,14 +69,25 @@ export default function UserProfile() {
       setUser(null);
       setToken(null);
       setShowModal(true);
-      // или: window.location.href = "/";
+      setIsLoggedIn(false)
     } catch (error) {
       console.log(error);
       alert("Не удалось удалить аккаунт");
     }
   }
   return (
+
     <div>
+
+      {showModal && (
+        <Modals
+          setShowModal={setShowModal}
+          onAuthSuccess={(newToken) => {
+            setToken(newToken);
+            setIsLoggedIn(true);
+          }}
+        />
+      )}
       {isLoggedIn &&
         <div className="flex justify-between">
           <div className="border border-gray-500 rounded-4xl p-2 w-fit h-fit">
@@ -103,7 +114,7 @@ export default function UserProfile() {
                   placeholder="@example"
                   readOnly={!isEditing}
                   className="bg-gray-50 py-5 px-10 rounded}xl  border border-transparent focus:border-blue-500 transition-all duration-200 focus:outline-none" />
-                {isEditing && <Image src={pen} alt="ruchka" className=" pointer-events-none   absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5" />}
+                {isEditing && <Image src={pen} alt="pen" className=" pointer-events-none   absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5" />}
               </div>
             </div>
             <div className="flex flex-col gap-2">
@@ -114,7 +125,7 @@ export default function UserProfile() {
                   readOnly={!isEditing}
                   placeholder='parool'
                   className="bg-gray-50 py-5 px-10 rounded-2xl  border border-transparent focus:border-blue-500 transition-all duration-200 focus:outline-none" />
-                {isEditing && <Image src={pen} alt="ruchka" className=" pointer-events-none   absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5" />}
+                {isEditing && <Image src={pen} alt="pen" className=" pointer-events-none   absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5" />}
               </div>
             </div>
             <button className="border border-[#1D75DD] p-5 rounded-2xl text-[#1D75DD] hover:text-white hover:bg-[#1D75DD] transition duration-300">Публичный профиль</button>
@@ -177,7 +188,15 @@ export default function UserProfile() {
         </div>
 
       }
-      {showModal && <Modals setShowModal={setShowModal} />}
+      {showModal && (
+        <Modals
+          setShowModal={setShowModal}
+          onAuthSuccess={(newToken) => {
+            setToken(newToken);
+            setIsLoggedIn(true);
+          }}
+        />
+      )}
     </div>
   )
 }

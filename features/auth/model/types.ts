@@ -1,5 +1,6 @@
 export interface ModalsProps {
   setShowModal: (value: boolean) => void;
+  onAuthSuccess?: (token: string) => void;
 }
 
 export interface registerPhone {

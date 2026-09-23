@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
-import {authApi,  verifyOtp} from "@/features/auth/api/authApi"
+import { useRouter } from "next/navigation";
+import { authApi, verifyOtp } from "@/features/auth/api/authApi"
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Image from "next/image";
@@ -31,7 +32,7 @@ import {
 
 
 
-export function Modals({ setShowModal }: ModalsProps) {
+export function Modals({ setShowModal, onAuthSuccess }: ModalsProps) {
   const [phone, setPhone] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -43,6 +44,7 @@ export function Modals({ setShowModal }: ModalsProps) {
   const [phoneError, setPhoneError] = useState("");
   const [checkError, setCheckError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const router = useRouter()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let hasError = false;
@@ -104,7 +106,7 @@ export function Modals({ setShowModal }: ModalsProps) {
       password: password,
       email: email,
       full_name: name
-      
+
     }
     try {
       const info = await registerInfo(data)
@@ -113,6 +115,8 @@ export function Modals({ setShowModal }: ModalsProps) {
       const token = localStorage.getItem("token");
       console.log("Manovi token", token);
       setmodal("login")
+      setShowModal(false);
+      onAuthSuccess?.(info.token)
     }
     catch (error) {
       console.log(error);
@@ -126,12 +130,11 @@ export function Modals({ setShowModal }: ModalsProps) {
     }
     try {
       const login = await loginApi(data)
-      console.log("LOGIN:", login);
-      console.log("TOKEN:", login?.token);
-      console.log("Login natijasi:", login);
-      localStorage.setItem("token", login.token);
+      console.log("Login:", login);
+      console.log("Token:", login.token_key);
+      localStorage.setItem("token", login.token_key);
       setShowModal(false)
-
+      router.push("/profile")
     }
     catch (error) {
       console.log(error);
@@ -139,7 +142,7 @@ export function Modals({ setShowModal }: ModalsProps) {
   }
   const ResetPassword = async (e: React.FormEvent) => {
     e.preventDefault()
-    const data: PasswordResetRequest  = {
+    const data: PasswordResetRequest = {
       method: "whatsapp",
       phone_number: `+${phone}`,
     }
@@ -170,7 +173,7 @@ export function Modals({ setShowModal }: ModalsProps) {
   const passComplete = async (e: React.FormEvent) => {
     e.preventDefault()
     const data: newPass = {
-     
+
       phone_number: `+${phone}`,
       otp: otp,
       new_password: password
@@ -400,7 +403,7 @@ export function Modals({ setShowModal }: ModalsProps) {
         (<div className="bg-white p-5  flex flex-col  text-center  gap-4 rounded-2xl ">
           <Image src={cencel} alt="cencel" className="self-end w-6  cursor-pointer" onClick={() => setShowModal(false)} />
           <h2 className="text-4xl">Akkaunt info</h2>
-          <p className="text-gray-400">yazoorin</p>
+          <p className="text-gray-400">Напишите данные</p>
           <form className="flex flex-col gap-4" onSubmit={handleRerister}>
             <PhoneInput
               country="kg"

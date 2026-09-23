@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/widgets/header/Header";
 import { Footer } from "@/widgets/footer/Footer";
+import { AuthModalProvider } from "./shared/providers/AuthModalProvider";
+
 
 
 
@@ -20,17 +22,20 @@ export default function RootLayout({
     <html
       lang="en"
     >
-      <body className="  "> 
-        <Header />
+      <body className="  ">
 
-        <main  >
-          
-          {children}
+        <AuthModalProvider>
+          <Header />
 
-        </main>
+          <main  >
+
+            {children}
+
+          </main>
+        </AuthModalProvider>
 
         < Footer />
-        </body>
-    </html>
+      </body>
+    </html >
   );
 }
