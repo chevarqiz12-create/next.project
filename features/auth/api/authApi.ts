@@ -100,6 +100,25 @@ export const newPassword = async (data: newPass) => {
 }
 
 
+// export const registerInfo = async (data: registerRequest) => {
+//   try {
+//     const response = await axios.post(
+//       "https://front-lalafo-students.prolabagency.com/api/v1/auth/register/",
+//       data
+//     );
+//     return response.data;
+//   } catch (error) {
+//     if (axios.isAxiosError(error)) {
+//       console.log("STATUS:", error.response?.status);
+//       console.log("DATA:", error.response?.data);
+//     }
+//     throw error;
+//   }
+// };
+
+
+
+
 export const registerInfo = async (data: registerRequest) => {
   try {
     const response = await axios.post(
@@ -110,7 +129,7 @@ export const registerInfo = async (data: registerRequest) => {
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.log("STATUS:", error.response?.status);
-      console.log("DATA:", error.response?.data);
+      console.log("DATA:", JSON.stringify(error.response?.data, null, 2));   // ✅ полный вывод
     }
     throw error;
   }
