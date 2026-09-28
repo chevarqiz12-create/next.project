@@ -1,10 +1,10 @@
-import AdsList from "@/entities/ads/ui/AdsList";
+import { AdsList } from "@/widgets/adList/ui/AdList";
 
-export default function page() {
-
+export default function AdsPage() {
   return (
-    <div>
+    <div className="p-2">
+      <h2 className="text-2xl">Мои объявления</h2>
       <AdsList />
     </div>
-  )
+  );
 }
